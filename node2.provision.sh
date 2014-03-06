@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y --disablerepo=epel* install cmirror cman rgmanager ricci python-repoze-who-friendlyform luci iscsi-initiator-utils lvm2-cluster gfs2-utils ccs mysql-server
+yum -y --disablerepo=epel* install cmirror cman rgmanager ricci python-repoze-who-friendlyform luci iscsi-initiator-utils lvm2-cluster gfs2-utils ccs mysql-server mysql
 
 yum -y install http://josephq.com/rs_fence-1.1-0.x86_64.rpm
 
