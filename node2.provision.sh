@@ -20,5 +20,11 @@ sed -i s/"^region=.*"/"region=$REGION"/g /etc/rs_fence
 LOGIN="mycloudaccount"
 sed -i s/"^login=.*"/"login=$LOGIN"/g /etc/rs_fence
 
+# Fencing
 chkconfig rs_fence on
 service rs_fence start
+
+# Ricci
+echo "rikkirikkirikki" | passwd ricci --stdin
+chkconfig ricci on
+service ricci start

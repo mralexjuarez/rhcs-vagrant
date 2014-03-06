@@ -55,6 +55,6 @@ if [ $(grep -c "#UPDATED" /etc/sysconfig/network-scripts/ifcfg-eth2) == 0 ]
 		echo "# Skipping NIC Setup"
 fi
 
-### Execute server specific script.
-#echo "Running $host scripts"
-#/vagrant/$host.provision.sh
+## Execute server specific script.
+echo "Running $host scripts"
+/vagrant/$host.provision.sh

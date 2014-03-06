@@ -41,3 +41,7 @@ tgtadm --mode target --op bind --tid 101 --initiator-address $rs_network_bits.10
 
 # Start Luci
 /sbin/service luci start
+
+# Allow 8084
+iptables -A CLUSTER-RULES -m tcp -p tcp --dport 8084 -j ACCEPT
+service iptables save
