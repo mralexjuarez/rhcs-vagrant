@@ -1,0 +1,8 @@
+# This file has been copied in place to overwrite the stock /etc/hosts file
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+## RHCS Cluster Nodes ##
+192.168.3.101 node1
+192.168.3.102 node2
+192.168.3.50 storage

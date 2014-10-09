@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<cluster config_version="2" name="mysql-clus">
+        <clusternodes>
+                <clusternode name="node1" nodeid="1">
+                         <fence>
+                                <method name="mysql_fence">
+                                        <device instanceid="" name="rackspace"/>
+                                </method>
+                        </fence>
+                </clusternode>
+                <clusternode name="node2" nodeid="2">
+                         <fence>
+                                <method name="mysql_fence">
+                                        <device instanceid="" name="rackspace"/>
+                                </method>
+                        </fence>
+                </clusternode>
+        </clusternodes>
+        <cman expected_votes="1" two_node="1"/>
+        <fencedevices>
+                <fencedevice agent="fence_pyrax" name="rackspace" region="IAD" apikey="" username="" power_wait="10" power_timeout="30"/>
+        </fencedevices>
+        <rm/>
+</cluster>

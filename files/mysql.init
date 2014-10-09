@@ -1,0 +1,6 @@
+echo "*****************************************************"
+echo "Please DO NOT use an initscript to stop/start/restart/status-check MySQL."
+echo "To start MySQL, please use the cluster services:"
+echo -e "\r\n# clusvcadm -e mysql-svc"
+echo "*****************************************************"
+[[ $FORCELOCALMYSQL == 1 ]] || exit 1

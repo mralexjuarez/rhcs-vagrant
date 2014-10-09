@@ -2,7 +2,13 @@
 
 yum -y --disablerepo=epel* install cmirror cman rgmanager ricci python-repoze-who-friendlyform luci iscsi-initiator-utils lvm2-cluster gfs2-utils ccs mysql-server mysql
 
-yum -y install http://josephq.com/rs_fence-1.1-0.x86_64.rpm
+#Configure LVM Locking
+#sed -i -e "s/^\s*locking_type = 1/    locking_type = 3/g" /etc/lvm/lvm.conf
+lvmconf --enable-cluster
+
+#Copy some files to in place
+cp /vagrant/files/hosts /etc/hosts
+cp /vagrant/files/motd /etc/motd
 
 #Configure iscsi - on both nodes
 modprobe scsi_transport_iscsi
@@ -12,17 +18,11 @@ iscsiadm –mode node –targetname iqn.storage:target0 –portal storage --logi
 service iscsi restart
 service iscsi status
 
-# set REGION to your region, i.e.
-REGION="ORD"
-sed -i s/"^region=.*"/"region=$REGION"/g /etc/rs_fence
-
-# set LOGIN to your cloud account name, i.e.
-LOGIN="mycloudaccount"
-sed -i s/"^login=.*"/"login=$LOGIN"/g /etc/rs_fence
-
 # Fencing
-chkconfig rs_fence on
-service rs_fence start
+pip-python install hgtools
+pip-python install pyrax
+curl -o /usr/sbin/fence_pyrax https://raw.githubusercontent.com/shannonmitchell/rhcs_in_rs_cloud/master/deploy_scripts/fence_pyrax
+chmod u+x /usr/sbin/fence_pyrax
 
 # Ricci
 echo "rikkirikkirikki" | passwd ricci --stdin

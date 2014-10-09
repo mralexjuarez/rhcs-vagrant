@@ -1,0 +1,26 @@
+_____  _    _  _____  _____  __          __              _             _
+|  __ \| |  | |/ ____|/ ____| \ \        / /             (_)           | |
+| |__) | |__| | |    | (___    \ \  /\  / /_ _ _ __ _ __  _ _ __   __ _| |
+|  _  /|  __  | |     \___ \    \ \/  \/ / _` | '__| '_ \| | '_ \ / _` | |
+| | \ \| |  | | |____ ____) |    \  /\  / (_| | |  | | | | | | | | (_| |_|
+|_|  \_\_|  |_|\_____|_____/      \/  \/ \__,_|_|  |_| |_|_|_| |_|\__, (_)
+                                                                   __/ |
+                                                                  |___/
+This server is a member of an RHCS cluster!
+Do NOT reboot this server at the same time as the other node!
+ 
+DO NOT start/stop services outside of the cluster.
+You can use the cluster CLI tools to view the status of the cluster,
+and to re-start services controlled by the cluster.
+ 
+'clustat' ~= Will show the status of the cluster
+'clusvcadm -R mysql-svc' ~= Will restart MySQL in place on the same server
+'clusvcadm -r mysql-svc -m <node name>' ~= Will relocate MySQL to that node
+'clusvcadm -d mysql-svc' ~= Will disable MySQL
+'clusvcadm -e mysql-svc' ~= Will enable MySQL
+ 
+Cluster messages are logged to /var/log/messages.
+ 
+DO NOT mount/unmount filesystems or restart cluster applications
+without using the cluster tools. Contact Rackspace Support BEFORE
+upgrading your kernel.
